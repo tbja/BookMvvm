@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="InfiniteListView">
+        <attr name="swipeRefreshIndicatorColor" format="color"/>
+        <attr name="scrollbarVisible" format="boolean"/>
+        <attr name="dividerVisible" format="boolean"/>
+    </declare-styleable>
+</resources>

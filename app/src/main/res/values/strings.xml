@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">BookMvvm</string>
+    <string name="book_title">Title : </string>
+    <string name="book_subtitle">Subtitle : </string>
+    <string name="book_isbn13">Isbn13 : </string>
+    <string name="book_price">Price : </string>
+    <string name="book_url">Url : </string>
+    <string name="book_bookmark">BookMark : </string>
+    <string name="back">back</string>
+    <string name="hint_search_word">Input words</string>
+    <string name="search">Search</string>
+    <string name="bookmark">BookMark</string>
+    <string name="histories">Histories</string>
+    <string name="sort">Sort : </string>
+    <string name="sort_title">Title</string>
+    <string name="sort_price">Price</string>
+    <string name="memo">Memo : </string>
+    <string name="memo_add">Add</string>
+    <string name="del_memo">del</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
