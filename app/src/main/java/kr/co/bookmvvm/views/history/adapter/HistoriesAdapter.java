@@ -86,9 +86,8 @@ public class HistoriesAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 HistoriesDB.getInstance().delHistory(bItem.getIsbn13());
-                items.remove(bItem.getIsbn13());
-                setDatas(items);
-                notifyDataSetChanged();
+                HistoryViewModel historyViewModel = ViewModelProviders.of((FragmentActivity)context).get(HistoryViewModel.class);
+                historyViewModel.loadHistories();
             }
         });
 

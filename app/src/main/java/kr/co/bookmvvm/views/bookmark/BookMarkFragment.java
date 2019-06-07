@@ -31,13 +31,17 @@ import kr.co.bookmvvm.vm.BookMarkViewModel;
 
 
 public class BookMarkFragment extends Fragment {
+    static BookMarkFragment instance = null;
     @BindView(R.id.lv_bookmark) ListView lv_bookmark;
     private BookMarkViewModel bookMarkViewModel;
     private HashMap<String ,Book> bookMarksItems = new HashMap<>();
     private BookMarkAdapter bookMarkAdapter;
 
     public static BookMarkFragment newInstance() {
-        return new BookMarkFragment();
+        if (instance == null) {
+            instance = new BookMarkFragment();
+        }
+        return instance;
     }
 
     @Override
@@ -53,13 +57,13 @@ public class BookMarkFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        bookMarkViewModel = ViewModelProviders.of(this).get(BookMarkViewModel.class);
+        bookMarkViewModel = ViewModelProviders.of(getActivity()).get(BookMarkViewModel.class);
         // TODO: Use the ViewModel
 
         bookMarkAdapter = new BookMarkAdapter(getActivity(),bookMarksItems);
         lv_bookmark.setAdapter(bookMarkAdapter);
 
-        bookMarkViewModel.getBookMarks().observe(this, new Observer<HashMap<String, Book>>() {
+        bookMarkViewModel.getBookMarks().observe(getActivity(), new Observer<HashMap<String, Book>>() {
                     @Override
                     public void onChanged(@Nullable HashMap<String, Book> bookMarkHashMap) {
                         bookMarksItems.clear();

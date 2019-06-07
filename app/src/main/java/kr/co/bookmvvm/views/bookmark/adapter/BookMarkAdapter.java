@@ -1,6 +1,8 @@
 package kr.co.bookmvvm.views.bookmark.adapter;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +23,7 @@ import kr.co.bookmvvm.R;
 import kr.co.bookmvvm.db.BookMarkDB;
 import kr.co.bookmvvm.model.Book;
 import kr.co.bookmvvm.views.newbook.adapter.NewBookListAdapter;
+import kr.co.bookmvvm.vm.BookMarkViewModel;
 
 public class BookMarkAdapter extends BaseAdapter {
     HashMap<String,Book> items = new HashMap<>();
@@ -82,9 +85,8 @@ public class BookMarkAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 BookMarkDB.getInstance().delBookMark(bItem.getIsbn13());
-                items.remove(bItem.getIsbn13());
-                setDatas(items);
-                notifyDataSetChanged();
+                BookMarkViewModel bookMarkViewModel = ViewModelProviders.of((FragmentActivity)context).get(BookMarkViewModel.class);
+                bookMarkViewModel.loadBookMarks();
             }
         });
 

@@ -31,13 +31,17 @@ import kr.co.bookmvvm.vm.HistoryViewModel;
 
 
 public class HistoryFragment extends Fragment {
+    static HistoryFragment instance = null;
     @BindView(R.id.lv_hostories) ListView lv_hostories;
     private HistoryViewModel historyViewModel;
     HistoriesAdapter historiesAdapter;
     HashMap<String,Book> histories = new HashMap<>();
 
     public static HistoryFragment newInstance() {
-        return new HistoryFragment();
+        if (instance == null) {
+            instance = new HistoryFragment();
+        }
+        return instance;
     }
 
     @Override
@@ -53,13 +57,13 @@ public class HistoryFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        historyViewModel = ViewModelProviders.of(this).get(HistoryViewModel.class);
+        historyViewModel = ViewModelProviders.of(getActivity()).get(HistoryViewModel.class);
         // TODO: Use the ViewModel
 
         historiesAdapter = new HistoriesAdapter(getActivity(),histories);
         lv_hostories.setAdapter(historiesAdapter);
 
-        historyViewModel.getHistories().observe(this, new Observer<HashMap<String, Book>>() {
+        historyViewModel.getHistories().observe(getActivity(), new Observer<HashMap<String, Book>>() {
                     @Override
                     public void onChanged(@Nullable HashMap<String, Book> bookMarkHashMap) {
                         histories.clear();

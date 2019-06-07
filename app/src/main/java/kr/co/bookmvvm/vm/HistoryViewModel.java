@@ -20,7 +20,7 @@ public class HistoryViewModel extends ViewModel {
         return histories;
     }
 
-    private void loadHistories() {
+    public void loadHistories() {
         histories.setValue(HistoriesDB.getInstance().getHistories());
     }
 }

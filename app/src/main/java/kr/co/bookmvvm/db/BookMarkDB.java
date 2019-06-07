@@ -1,5 +1,7 @@
 package kr.co.bookmvvm.db;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -24,6 +26,7 @@ public class BookMarkDB {
     public void delBookMark(String isbn13) {
         if (bookMarkList.get(isbn13) != null) {
             bookMarkList.remove(isbn13);
+            Log.d("aaa","delBookMark : " + bookMarkList.size());
         }
     }
 

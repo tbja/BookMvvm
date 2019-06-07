@@ -17,13 +17,13 @@ public class BookMarkViewModel extends ViewModel {
 
     public LiveData<HashMap<String,Book>> getBookMarks() {
         if (bookMarks == null) {
-            bookMarks = new MutableLiveData<HashMap<String,Book>>();
+            bookMarks = new MutableLiveData<>();
             loadBookMarks();
         }
         return bookMarks;
     }
 
-    private void loadBookMarks() {
+    public void loadBookMarks() {
         bookMarks.setValue(BookMarkDB.getInstance().getBookMarkList());
     }
 }

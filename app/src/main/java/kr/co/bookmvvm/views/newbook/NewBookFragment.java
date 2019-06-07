@@ -31,14 +31,17 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class NewBookFragment extends Fragment {
-
+    static NewBookFragment instance = null;
     private NewBookViewModel mViewModel;
     @BindView(R.id.lv_book_list) ListView lv_book_list;
     Books books;
     NewBookListAdapter newBookListAdapter;
 
     public static NewBookFragment newInstance() {
-        return new NewBookFragment();
+        if (instance == null) {
+            instance = new NewBookFragment();
+        }
+        return instance;
     }
 
     @Override
@@ -55,10 +58,10 @@ public class NewBookFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(NewBookViewModel.class);
+        mViewModel = ViewModelProviders.of(getActivity()).get(NewBookViewModel.class);
         // TODO: Use the ViewModel
 
-        mViewModel.getNewBooks().observe(this, new Observer<Books>() {
+        mViewModel.getNewBooks().observe(getActivity(), new Observer<Books>() {
                 @Override
                 public void onChanged(@Nullable Books items) {
                     books = items;
