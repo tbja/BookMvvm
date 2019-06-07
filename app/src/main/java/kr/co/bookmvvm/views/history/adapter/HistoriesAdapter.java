@@ -1,6 +1,10 @@
 package kr.co.bookmvvm.views.history.adapter;
 
+import android.app.Activity;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +23,7 @@ import kr.co.bookmvvm.GlideApp;
 import kr.co.bookmvvm.R;
 import kr.co.bookmvvm.db.HistoriesDB;
 import kr.co.bookmvvm.model.Book;
+import kr.co.bookmvvm.vm.HistoryViewModel;
 
 public class HistoriesAdapter extends BaseAdapter {
     HashMap<String,Book> items = new HashMap<>();

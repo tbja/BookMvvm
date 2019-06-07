@@ -24,19 +24,4 @@ public interface RetrofitRequest {
 
     @GET("search/{query}/{page}")
     Call<Books> getSearchBooksList(@Path("query") String search, @Path("page") Integer page);
-/*
-    @GET("books")
-    Call<ArrayList<Book>> getBooks();
-
-    @GET("goods")
-    Call<ArrayList<Goods>> getGoods();
-
-    @Multipart
-    @POST("insertOk")
-    Call<Void> insertData(@Part MultipartBody.Part photo, @Part("title") RequestBody title
-            , @Part("writer") RequestBody writer, @Part("content") RequestBody content);
-
-    @GET("json_list")
-    Call<ArrayList<Board>> getBoardList();
-    */
 }

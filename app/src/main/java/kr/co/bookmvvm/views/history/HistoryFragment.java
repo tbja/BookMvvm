@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +20,10 @@ import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.OnItemClick;
 import kr.co.bookmvvm.R;
+import kr.co.bookmvvm.db.HistoriesDB;
 import kr.co.bookmvvm.model.Book;
 import kr.co.bookmvvm.views.bookdetail.BookDetailActivity;
 import kr.co.bookmvvm.views.history.adapter.HistoriesAdapter;
@@ -76,5 +79,4 @@ public class HistoryFragment extends Fragment {
         intent.putExtra("bookInfo", gson.toJson(item));
         startActivity(intent);
     }
-
 }
