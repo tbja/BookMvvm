@@ -4,6 +4,7 @@
     android:layout_height="50dp"
     android:orientation="horizontal"
     android:gravity="center_vertical"
+    android:descendantFocusability="blocksDescendants"
     >
     <ImageView
         android:id="@+id/img_book"

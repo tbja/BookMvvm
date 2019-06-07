@@ -2,6 +2,7 @@ package kr.co.bookmvvm.views.bookmark;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,16 +11,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnItemClick;
 import kr.co.bookmvvm.R;
 import kr.co.bookmvvm.model.Book;
+import kr.co.bookmvvm.views.bookdetail.BookDetailActivity;
 import kr.co.bookmvvm.views.bookmark.adapter.BookMarkAdapter;
 import kr.co.bookmvvm.vm.BookMarkViewModel;
 
@@ -63,6 +69,15 @@ public class BookMarkFragment extends Fragment {
                     }
                 }
         );
+    }
+
+    @OnItemClick(R.id.lv_bookmark)
+    public void onItemClick(AdapterView<?> parent, int position) {
+        Book item = bookMarksItems.get(bookMarkAdapter.getItem(position).getKey());
+        Intent intent = new Intent(getActivity(), BookDetailActivity.class);
+        Gson gson = new Gson();
+        intent.putExtra("bookInfo", gson.toJson(item));
+        startActivity(intent);
     }
 
 }
